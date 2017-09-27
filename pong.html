@@ -25,19 +25,26 @@
   function move()
   {
   ballX = ballX + ballSpeedX;
-  if(ballX > canvas.width)
-  {
-
-  }
+    if(ballX > canvas.width)
+    {
+      ballSpeedX =  -ballSpeedX;
+    }
+    if(ballX < 0)
+    {
+      ballSpeedX =  -ballSpeedX;
+    }
   }
 
   function draw()
   {
-    canvasContext.fillStyle = 'black';
-    canvasContext.fillRect(0,0,canvas.width,canvas.height);
-    canvasContext.fillStyle = "white";
-    canvasContext.fillRect(0,210,10,100);
-    canvasContext.fillStyle = "red";
-    canvasContext.fillRect(ballX,100,10,10);
+    colorRect.fillRect(0,0,canvas.width,canvas.height, "black");
+    colorRect.fillRect(0,210,10,100, "white");
+    colorRect.fillRect(ballX,100,10,10, "red");
   }
+
+  function colorRect(leftX, topY, height, width, drawColor)
+    {
+      canvasContext.fillStyle = drawColor;
+      canvasContext.fillRect(leftX, topY, height, width);
+    }
   </script>
